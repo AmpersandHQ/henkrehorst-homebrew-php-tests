@@ -1,0 +1,27 @@
+os: osx
+osx_image: xcode10.3
+
+stages:
+  - PHP Versions Compilation Tests
+
+jobs:
+  include:
+    - stage: PHP Versions Compilation Tests
+      name: "5.6"
+      script:
+        - brew install valet-php@5.6 --build-from-source
+    - script:
+        - brew install valet-php@7.0 --build-from-source
+      name: "7.0"
+    - script:
+        - brew install valet-php@7.1 --build-from-source
+      name: "7.1"
+    - script:
+        - brew install valet-php@7.2 --build-from-source
+      name: "7.2"
+    - script:
+        - brew install valet-php@7.3 --build-from-source
+      name: "7.3"
+
+before_script:
+  - travis_retry brew tap henkrehorst/homebrew-php
