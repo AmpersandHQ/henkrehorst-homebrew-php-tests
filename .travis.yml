@@ -1,5 +1,4 @@
 os: osx
-osx_image: xcode11.3
 
 stages:
   - PHP Versions Compilation Tests
@@ -7,21 +6,15 @@ stages:
 jobs:
   include:
     - stage: PHP Versions Compilation Tests
-      name: "5.6"
+      name: "8.0"
       script:
-        - travis_wait 30 brew install valet-php@5.6 --build-from-source
+        - travis_wait 30 brew install valet-php@8.0 --build-from-source
     - script:
-        - travis_wait 30 brew install valet-php@7.0 --build-from-source
-      name: "7.0"
+        - travis_wait 30 brew install valet-php@8.1 --build-from-source
+      name: "8.1"
     - script:
-        - travis_wait 30 brew install valet-php@7.1 --build-from-source
-      name: "7.1"
-    - script:
-        - travis_wait 30 brew install valet-php@7.2 --build-from-source
-      name: "7.2"
-    - script:
-        - travis_wait 30 brew install valet-php@7.3 --build-from-source
-      name: "7.3"
+        - travis_wait 30 brew install valet-php@7.4 --build-from-source
+      name: "7.4"
 
 before_script:
   - travis_retry brew tap henkrehorst/homebrew-php
